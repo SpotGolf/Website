@@ -1,0 +1,69 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+@plugin "@tailwindcss/typography";
+@source "../../hugo_stats.json";
+
+/* Colours taken from the app icons: fairway-* is the SpotGolf icon's green,
+   navy-* is the CourseBuilder icon's background, sand and flag are its bunker
+   and pin flag. */
+@theme {
+  --color-fairway-50: #effaf2;
+  --color-fairway-100: #d8f3df;
+  --color-fairway-200: #b3e6c2;
+  --color-fairway-300: #95d8a9;
+  --color-fairway-400: #4fc47a;
+  --color-fairway-500: #2db85a;
+  --color-fairway-600: #229848;
+  --color-fairway-700: #1b7a3a;
+  --color-fairway-800: #156030;
+  --color-fairway-900: #0d5323;
+  --color-fairway-950: #073016;
+
+  --color-navy-50: #f3f6fb;
+  --color-navy-100: #e3e9f3;
+  --color-navy-200: #c5d1e6;
+  --color-navy-300: #9aacce;
+  --color-navy-400: #6a80ae;
+  --color-navy-500: #4a5f8f;
+  --color-navy-600: #384a74;
+  --color-navy-700: #2c3b5e;
+  --color-navy-800: #1f2b47;
+  --color-navy-900: #162038;
+  --color-navy-950: #0d1426;
+
+  --color-sand: #e8d5ae;
+  --color-flag: #d7262e;
+}
+
+/* Inline code styling (not inside pre/code blocks) */
+.prose :where(code):not(:where(pre code, [class~=not-prose] *)) {
+  @apply bg-navy-100 text-navy-900 px-1.5 py-0.5 rounded text-sm;
+}
+
+:is(.dark) .prose :where(code):not(:where(pre code, [class~=not-prose] *)) {
+  @apply bg-navy-800 text-navy-100;
+}
+
+/* Remove backtick pseudo-elements from inline code */
+.prose :where(code):not(:where([class~=not-prose],[class~=not-prose] *))::before,
+.prose :where(code):not(:where([class~=not-prose],[class~=not-prose] *))::after {
+  content: none;
+}
+
+/* Tables in the privacy policy scroll sideways on narrow screens instead of the page */
+.prose table {
+  display: block;
+  overflow-x: auto;
+}
+
+/* Mowing stripes behind the hero, like a freshly cut fairway */
+.fairway-stripes {
+  --stripe: color-mix(in srgb, var(--color-fairway-500) 7%, transparent);
+  background-image: repeating-linear-gradient(135deg, var(--stripe) 0 56px, transparent 56px 112px);
+  mask-image: radial-gradient(ellipse 75% 65% at 50% 35%, #000 35%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 75% 65% at 50% 35%, #000 35%, transparent 100%);
+}
+
+:is(.dark) .fairway-stripes {
+  --stripe: color-mix(in srgb, var(--color-fairway-400) 7%, transparent);
+}

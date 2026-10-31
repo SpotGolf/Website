@@ -1,0 +1,90 @@
+{{ define "main" }}
+  <!-- Hero -->
+  <section class="relative overflow-hidden">
+    <div class="fairway-stripes pointer-events-none absolute inset-0" aria-hidden="true"></div>
+    <div class="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-28 text-center">
+      <div class="flex justify-center mb-8">
+        {{ partial "logo.html" (dict "class" "h-24 w-24 sm:h-32 sm:w-32 drop-shadow-xl") }}
+      </div>
+      <p class="inline-flex items-center gap-2 rounded-full border border-fairway-600/30 dark:border-fairway-400/30 bg-fairway-500/10 dark:bg-fairway-400/10 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-fairway-800 dark:text-fairway-300">
+        <span class="h-2 w-2 rounded-full bg-flag" aria-hidden="true"></span>
+        Open source golf
+      </p>
+      <h1 class="mt-6 text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-balance text-navy-950 dark:text-white">
+        {{ .Params.headline }}
+      </h1>
+      <p class="mt-6 text-lg sm:text-xl text-navy-600 dark:text-navy-200 max-w-2xl mx-auto">
+        {{ .Site.Params.description }}
+      </p>
+      <div class="mt-10 flex flex-wrap items-center justify-center gap-4">
+        <a href="#projects" class="px-6 py-3 bg-fairway-700 hover:bg-fairway-800 dark:bg-fairway-500 dark:hover:bg-fairway-400 dark:text-navy-950 text-white font-medium rounded-lg transition-colors">
+          See the projects
+        </a>
+        <a href="{{ .Site.Params.github }}" class="px-6 py-3 border border-navy-200 dark:border-navy-700 text-navy-700 dark:text-navy-100 hover:bg-navy-50 dark:hover:bg-navy-800 font-medium rounded-lg transition-colors" target="_blank" rel="noopener">
+          GitHub
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects" class="scroll-mt-16 border-t border-navy-100 dark:border-navy-800 bg-navy-50 dark:bg-navy-900">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
+      <div class="text-center max-w-2xl mx-auto">
+        <h2 class="text-2xl sm:text-3xl font-bold text-navy-950 dark:text-white">The projects</h2>
+        <div class="mt-4 text-navy-600 dark:text-navy-200 [&_a]:text-fairway-700 dark:[&_a]:text-fairway-400 [&_a]:underline">
+          {{ .Content }}
+        </div>
+      </div>
+
+      <ul class="mt-12 flex flex-wrap justify-center gap-6">
+        {{ range hugo.Data.projects }}
+          {{ $url := printf "%s/%s" site.Params.github .repo }}
+          <li class="w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)]">
+            <a href="{{ $url }}" class="group flex h-full flex-col rounded-2xl border border-navy-100 dark:border-navy-800 bg-white dark:bg-navy-950 p-6 shadow-sm hover:border-fairway-500 dark:hover:border-fairway-400 hover:shadow-md transition" target="_blank" rel="noopener">
+              <div class="flex items-center gap-4">
+                {{ partial "project-icon.html" .icon }}
+                <div>
+                  <h3 class="text-lg font-semibold text-navy-950 dark:text-white group-hover:text-fairway-700 dark:group-hover:text-fairway-400 transition-colors">{{ .name }}</h3>
+                  <p class="text-xs font-semibold uppercase tracking-wider text-fairway-700 dark:text-fairway-400">{{ .kind }}</p>
+                </div>
+              </div>
+              <p class="mt-4 flex-1 text-sm leading-relaxed text-navy-600 dark:text-navy-200">{{ .description }}</p>
+              <p class="mt-5 inline-flex items-center gap-1.5 text-sm font-medium text-navy-500 dark:text-navy-300 group-hover:text-navy-950 dark:group-hover:text-white transition-colors">
+                <svg class="w-4 h-4" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+                SpotGolf/{{ .repo }}
+              </p>
+            </a>
+          </li>
+        {{ end }}
+      </ul>
+    </div>
+  </section>
+
+  <!-- How they fit together -->
+  <section class="border-t border-navy-100 dark:border-navy-800">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
+      <h2 class="text-2xl sm:text-3xl font-bold text-navy-950 dark:text-white text-center">How they fit together</h2>
+      <ol class="mt-12 flex flex-col lg:flex-row items-stretch lg:items-center justify-center gap-3">
+        {{ $steps := slice
+          (dict "name" "CourseBuilder" "text" "Map a course")
+          (dict "name" "CourseData" "text" "Share the map")
+          (dict "name" "CourseDataSwift" "text" "Read the map")
+          (dict "name" "SpotGolf" "text" "Play the round")
+        }}
+        {{ range $i, $s := $steps }}
+          {{ if $i }}
+            <li class="flex justify-center text-fairway-600 dark:text-fairway-400" aria-hidden="true">
+              <svg class="w-6 h-6 rotate-90 lg:rotate-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6 6 6-6 6"/></svg>
+            </li>
+          {{ end }}
+          <li class="rounded-xl border border-navy-100 dark:border-navy-800 bg-white dark:bg-navy-900 px-5 py-4 text-center lg:min-w-44">
+            <p class="font-semibold text-navy-950 dark:text-white">{{ $s.name }}</p>
+            <p class="mt-1 text-sm text-navy-500 dark:text-navy-300">{{ $s.text }}</p>
+          </li>
+        {{ end }}
+      </ol>
+      <p class="mt-8 text-center text-sm text-navy-500 dark:text-navy-300">SensorSources feeds the watch's motion and sound into SpotGolf to find each swing and putt.</p>
+    </div>
+  </section>
+{{ end }}

@@ -1,0 +1,25 @@
+{{/* A rounded app-icon tile for a project. The two apps use their own icons; the libraries get drawn ones in the same colours. */}}
+{{- $tile := "h-14 w-14 flex-none" -}}
+{{- if eq . "spotgolf" -}}
+  {{ partial "logo.html" (dict "class" $tile) }}
+{{- else if eq . "coursebuilder" -}}
+  {{/* The icon file has transparent padding; scale it up and clip it to the tile. */}}
+  <span class="{{ $tile }} block overflow-hidden rounded-[22%]">
+    <img src="{{ "images/coursebuilder.png" | relURL }}" alt="" class="h-full w-full scale-[1.2]" width="56" height="56" loading="lazy">
+  </span>
+{{- else -}}
+  <span class="{{ $tile }} rounded-[22%] flex items-center justify-center {{ if eq . "coursedata" }}bg-gradient-to-br from-fairway-500 to-fairway-900 text-white{{ else }}bg-gradient-to-br from-navy-600 to-navy-900 text-fairway-300{{ end }}" aria-hidden="true">
+    <svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      {{- if eq . "coursedata" -}}
+        <!-- Folded map -->
+        <path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2-6-2z"/><path d="M9 4v14M15 6v14"/>
+      {{- else if eq . "coursedataswift" -}}
+        <!-- Code brackets around a flag -->
+        <path d="m7 7-5 5 5 5M17 7l5 5-5 5"/><path d="M11 18V6l4 2-4 2"/>
+      {{- else -}}
+        <!-- Sensor wave -->
+        <path d="M2 12h3l2-6 4 12 4-9 2 3h5"/>
+      {{- end -}}
+    </svg>
+  </span>
+{{- end -}}

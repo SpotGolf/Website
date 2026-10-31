@@ -1,0 +1,4 @@
+{{- $class := .class | default "h-8 w-8" -}}
+{{- $svg := readFile "static/images/logo-mark.svg" -}}
+{{- $svg = replace $svg "<svg " (printf `<svg class="%s" role="img" aria-label="SpotGolf" ` $class) -}}
+{{- $svg | safeHTML -}}

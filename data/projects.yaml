@@ -1,0 +1,40 @@
+# Projects shown on the homepage, in order. `icon` is a partial in layouts/partials/project-icon.html.
+- name: SpotGolf
+  repo: SpotGolf
+  kind: iPhone and Apple Watch app
+  icon: spotgolf
+  description: >-
+    Tracks your round from your wrist. It finds your swings and putts from the watch's motion and sound,
+    marks where each shot landed, and keeps your score, putts, and club distances.
+
+- name: CourseBuilder
+  repo: CourseBuilder
+  kind: macOS app
+  icon: coursebuilder
+  description: >-
+    Builds the map of a golf course. Import the scorecard and OpenStreetMap shapes, draw tees, greens,
+    fairways, bunkers, and water over aerial imagery, then export the course for SpotGolf.
+
+- name: CourseData
+  repo: CourseData
+  kind: Course data
+  icon: coursedata
+  description: >-
+    The community-built library of golf course maps that SpotGolf downloads. Each course is a gzipped
+    JSON file made with CourseBuilder. Add a course by opening a pull request.
+
+- name: CourseDataSwift
+  repo: CourseDataSwift
+  kind: Swift package
+  icon: coursedataswift
+  description: >-
+    Swift types for course data: courses, holes, features, and coordinates. Use it to read CourseData
+    files in your own app.
+
+- name: SensorSources
+  repo: SensorSources
+  kind: Swift package
+  icon: sensorsources
+  description: >-
+    The accelerometer, motion, and microphone of a watch or phone behind one protocol, with mock sources
+    that play recorded clips so sensor code runs unchanged in the simulator.

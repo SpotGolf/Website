@@ -1,0 +1,29 @@
+<footer class="border-t border-navy-100 dark:border-navy-800 bg-navy-50 dark:bg-navy-900">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="flex flex-col md:flex-row justify-between gap-8">
+      <div>
+        {{ partial "wordmark.html" . }}
+        <p class="mt-3 text-sm text-navy-500 dark:text-navy-300 max-w-xs">{{ .Site.Params.description }}</p>
+      </div>
+      <div class="flex gap-16">
+        <div>
+          <h2 class="text-sm font-semibold text-navy-950 dark:text-white">Site</h2>
+          <ul class="mt-3 space-y-2">
+            {{ range .Site.Menus.main }}
+              <li><a href="{{ .URL }}" class="text-sm text-navy-500 dark:text-navy-300 hover:text-navy-950 dark:hover:text-white transition-colors">{{ .Name }}</a></li>
+            {{ end }}
+          </ul>
+        </div>
+        <div>
+          <h2 class="text-sm font-semibold text-navy-950 dark:text-white">Community</h2>
+          <ul class="mt-3 space-y-2">
+            <li><a href="{{ .Site.Params.github }}" class="text-sm text-navy-500 dark:text-navy-300 hover:text-navy-950 dark:hover:text-white transition-colors" target="_blank" rel="noopener">GitHub</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="mt-8 pt-8 border-t border-navy-100 dark:border-navy-800">
+      <p class="text-sm text-navy-500 dark:text-navy-300">&copy; {{ now.Year }} SpotGolf. Open source under the MIT License.</p>
+    </div>
+  </div>
+</footer>

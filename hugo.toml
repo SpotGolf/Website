@@ -1,0 +1,49 @@
+baseURL = "https://spot.golf/"
+locale = "en-us"
+title = "SpotGolf"
+
+[security]
+  [security.exec]
+    # Hugo 0.165 dropped tailwindcss from the default allow list; css.TailwindCSS needs it to run node_modules/.bin/tailwindcss
+    allow = ['^(dart-)?sass$', '^go$', '^git$', '^node$', '^npx$', '^postcss$', '^tailwindcss$']
+
+[build]
+  [build.buildStats]
+    enable = true
+    disableClasses = false
+    disableIDs = false
+    disableTags = false
+
+[[build.cachebusters]]
+  source = 'assets/notwatching/hugo_stats\.json'
+  target = 'css'
+
+[[build.cachebusters]]
+  source = '(postcss|tailwind)\.config\.js'
+  target = 'css'
+
+[[module.mounts]]
+  source = 'assets'
+  target = 'assets'
+
+[[module.mounts]]
+  disableWatch = true
+  source = 'hugo_stats.json'
+  target = 'assets/notwatching/hugo_stats.json'
+
+# Brochure site — no tags or categories.
+[taxonomies]
+
+[params]
+  description = "Open source golf. A shot tracking app for iPhone and Apple Watch, the tools that map the courses, and the course data itself."
+  github = "https://github.com/SpotGolf"
+
+[[menus.main]]
+  name = "Projects"
+  url = "/#projects"
+  weight = 10
+
+[[menus.main]]
+  name = "Privacy"
+  pageRef = "/privacy"
+  weight = 20

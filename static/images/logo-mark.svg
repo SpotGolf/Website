@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
+  <defs>
+    <linearGradient id="spotgolf-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#2db85a"/>
+      <stop offset="1" stop-color="#0d5323"/>
+    </linearGradient>
+  </defs>
+  <rect width="1024" height="1024" rx="228" fill="url(#spotgolf-bg)"/>
+  <ellipse cx="512" cy="800" rx="76" ry="16" fill="#95d8a9" opacity="0.6"/>
+  <path d="M512 780C420 660 340 540 340 430a172 172 0 0 1 344 0c0 110-80 230-172 350z" fill="#f4f9f5"/>
+  <circle cx="512" cy="430" r="65" fill="#95d8a9"/>
+</svg>
