@@ -1,6 +1,8 @@
 baseURL = "https://spot.golf/"
 locale = "en-us"
 title = "SpotGolf"
+# Content pages build to support.html instead of support/index.html. GitHub Pages serves /support from support.html, and the templates drop ".html" from links.
+uglyURLs = true
 
 [security]
   [security.exec]
