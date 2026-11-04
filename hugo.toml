@@ -47,3 +47,8 @@ title = "SpotGolf"
   name = "Privacy"
   pageRef = "/privacy"
   weight = 20
+
+[[menus.main]]
+  name = "Support"
+  pageRef = "/support"
+  weight = 30
