@@ -2,7 +2,7 @@
 title: "Privacy Policy"
 description: "What the SpotGolf app collects, where it goes, and how to delete it."
 ---
-Effective: [date of the first App Store release]
+Effective: November 5, 2026
 
 SpotGolf is an iPhone and Apple Watch app that tracks your golf round: where you hit each shot, your strokes, and your putts. This policy says what the app collects, where it goes, and how to delete it.
 
